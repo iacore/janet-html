@@ -1,10 +1,16 @@
 # Janet HTML
 
-`jpm install https://github.com/brandonchartier/janet-html`
+This is a large fork of janet-html
 
----
+## Install
 
+```sh
+jpm install https://github.com/swlkr/janet-html
 ```
+
+## Getting Started
+
+```clojure
 (import html :as h)
 
 (def todo-data
@@ -14,7 +20,7 @@
 
 (defn todo-fmt
   [todo]
-  [[:text (todo :id)]
+  [(todo :id)
    [:strong (todo :value)]])
 
 (defn todo-view
@@ -26,27 +32,21 @@
   [:ul {:id "foo" :class "bar"}
    (map todo-view data)])
 
-(assert (deep= (h/create [:div (todos-view todo-data)])
-               "<div><ul class=\"bar\" id=\"foo\"><li>1<strong>foo</strong></li><li>2<strong>bar</strong></li><li>3<strong>baz</strong></li></ul></div>"))
+(assert (deep= (h/encode [:div (todos-view todo-data)])
+               "<div><ul id=\"foo\" class=\"bar\"><li>1<strong>foo</strong></li><li>2<strong>bar</strong></li><li>3<strong>baz</strong></li></ul></div>"))
 
-(assert (deep= (h/create [:img {:src "/dog.gif"}])
+(assert (deep= (h/encode [:img {:src "/dog.gif"}])
                "<img src=\"/dog.gif\">"))
 
-(assert (deep= (h/create (h/img "/dog.gif"))
-               "<img src=\"/dog.gif\" alt=\"\">"))
-
-(assert (deep= (h/create [:br])
+(assert (deep= (h/encode [:br])
                "<br>"))
 
-(assert (deep= (h/create [:p "Lorem ipsum"])
+(assert (deep= (h/encode [:p "Lorem ipsum"])
                "<p>Lorem ipsum</p>"))
 
-(assert (deep= (h/create [:a {:href "http://github.com"} "GitHub"])
+(assert (deep= (h/encode [:a {:href "http://github.com"} "GitHub"])
                "<a href=\"http://github.com\">GitHub</a>"))
 
-(assert (deep= (h/create (h/link "http://github.com" "GitHub"))
-               "<a href=\"http://github.com\">GitHub</a>"))
-
-(assert (deep= (h/create [:span [[:text "Hello "] [:em "world!"]]])
+(assert (deep= (h/encode [:span "Hello " [:em "world!"]])
                "<span>Hello <em>world!</em></span>"))
 ```
