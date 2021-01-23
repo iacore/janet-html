@@ -1,6 +1,6 @@
 # Janet HTML
 
-This is a large fork of janet-html
+This is a large fork of [janet-html](https://github.com/brandonchartier/janet-html)
 
 ## Install
 
