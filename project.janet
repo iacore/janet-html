@@ -1,5 +1,5 @@
 (declare-project
-  :name "janet-html@swlkr"
+  :name "janet-html"
   :description "A library for representing HTML in Janet"
   :author "Brandon Chartier"
   :license "MIT"
