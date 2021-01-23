@@ -7,4 +7,4 @@
   :repo "git+https://github.com/swlkr/janet-html")
 
 (declare-source
-  :source ["html.janet"])
+  :source ["src/janet-html.janet"])

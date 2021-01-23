@@ -1,5 +1,5 @@
 (import tester :prefix "" :exit true)
-(import "html" :as html)
+(import "src/janet-html" :as html)
 
 
 (deftest
