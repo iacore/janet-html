@@ -93,7 +93,8 @@
   (or (indexed? children)
       (number? children)
       (string? children)
-      (buffer? children)))
+      (buffer? children)
+      (nil? children)))
 
 
 (defn- create-children
