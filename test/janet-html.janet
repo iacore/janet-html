@@ -132,4 +132,8 @@
 
   (test "html/encode"
       (is (deep= "<!DOCTYPE HTML><li><a href=\"#\">Text</a>After Text</li>"
-                 (html/encode (html/doctype :html5) [:li [:a {:href "#"} "Text"] "After Text"])))))
+                 (html/encode (html/doctype :html5) [:li [:a {:href "#"} "Text"] "After Text"]))))
+
+  (test "html with nil children"
+    (= "<div>Home page</div>"
+       (html/html [[:div "Home page"] nil]))))
