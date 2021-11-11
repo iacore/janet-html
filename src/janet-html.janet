@@ -146,6 +146,11 @@
     (not (indexed? element))
     (escape (string element))
 
+    # Use :<> as the element "name" to return multiple html elements without
+    # having to wrap them in a useless extra html element.
+    (and (indexed? element) (= :<> (first element)))
+    (string/join (map create (drop 1 element)))
+
     (indexed? element)
     (if (all valid-children? element)
       (string/join (map create element))
