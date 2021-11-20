@@ -42,6 +42,23 @@
                    [[:span "hello world"]
                     [:span "2"]]])))
 
+  (test "two non-nested elements without attributes"
+    (= `<span>hello world</span><span>2</span>`
+       (html/html [[:span "hello world"]
+                   [:span "2"]])))
+
+  (test "two non-nested elements without attributes - using :<> as a visual indicator for returning multiple elements"
+    (= `<span>hello world</span><span>2</span>`
+       (html/html [:<>
+                   [:span "hello world"]
+                   [:span "2"]])))
+
+  (test "two non-nested elements with attributes - using :<> as a visual indicator for returning multiple elements"
+    (= `<span class="my-greeting">hello world</span><span style="color: red;">2</span>`
+       (html/html [:<>
+                   [:span {:class "my-greeting"} "hello world"]
+                   [:span {:style "color: red;"} "2"]])))
+
   (test "non-empty div with attributes"
     (= `<div class="class">hello world</div>` (html/html [:div {:class "class"} "hello world"])))
 
