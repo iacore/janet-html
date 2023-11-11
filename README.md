@@ -11,7 +11,7 @@ jpm install https://github.com/swlkr/janet-html
 ## Getting Started
 
 ```clojure
-(import html :as h)
+(import janet-html :as h)
 
 (def todo-data
   [{:id 1 :value "foo"}
@@ -32,14 +32,15 @@ jpm install https://github.com/swlkr/janet-html
   [:ul {:id "foo" :class "bar"}
    (map todo-view data)])
 
+
 (assert (deep= (h/encode [:div (todos-view todo-data)])
                "<div><ul id=\"foo\" class=\"bar\"><li>1<strong>foo</strong></li><li>2<strong>bar</strong></li><li>3<strong>baz</strong></li></ul></div>"))
 
 (assert (deep= (h/encode [:img {:src "/dog.gif"}])
-               "<img src=\"/dog.gif\">"))
+               "<img src=\"/dog.gif\" />"))
 
 (assert (deep= (h/encode [:br])
-               "<br>"))
+               "<br />"))
 
 (assert (deep= (h/encode [:p "Lorem ipsum"])
                "<p>Lorem ipsum</p>"))
@@ -49,4 +50,5 @@ jpm install https://github.com/swlkr/janet-html
 
 (assert (deep= (h/encode [:span "Hello " [:em "world!"]])
                "<span>Hello <em>world!</em></span>"))
+
 ```
